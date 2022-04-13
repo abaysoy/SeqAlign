@@ -20,6 +20,13 @@ p <- c(person("Alev", "Baysoy", role = "aut", email = "alev.baysoy@yale.edu"))
 # -----------------------------------------------------------------
 # runSW
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param inputFile
+#' @param scoreFile
+#' @param openGap
+#' @param extGap
+#' @export
 runSW = function(inputFile, scoreFile, openGap = -2, extGap = -1) {
 
   # convert string to integer
@@ -58,6 +65,12 @@ runSW = function(inputFile, scoreFile, openGap = -2, extGap = -1) {
 # -----------------------------------------------------------------
 # Gap Penalty
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param k
+#' @param openGap
+#' @param extGap
+#' @export
 W = function(k, openGap, extGap) {
   return ( (-1) * (openGap + extGap * (k - 1)) )
 }
@@ -65,6 +78,16 @@ W = function(k, openGap, extGap) {
 # -----------------------------------------------------------------
 # Construct Matrices
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param seq1
+#' @param seq2
+#' @param score_matrix
+#' @param openGap
+#' @param extGap
+#' @export
+#'
+
 construct_matrices = function(seq1, seq2, score_matrix, openGap, extGap) {
 
   # Dimensions
@@ -128,6 +151,13 @@ construct_matrices = function(seq1, seq2, score_matrix, openGap, extGap) {
 # -----------------------------------------------------------------
 # Traceback
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param seq1
+#' @param seq2
+#' @param M
+#' @param A
+#' @export
 traceback = function(seq1, seq2, M, A) {
 
   # locate maximum value
@@ -178,6 +208,14 @@ traceback = function(seq1, seq2, M, A) {
 # -----------------------------------------------------------------
 # Write Results to File
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param filepath
+#' @param sequences
+#' @param scoring_matrix
+#' @param sequences_aligned
+#' @export
+#'
 write2file = function(filepath, sequences, scoring_matrix, sequences_aligned) {
 
   # Start writing to an output file
@@ -218,6 +256,13 @@ write2file = function(filepath, sequences, scoring_matrix, sequences_aligned) {
 # -----------------------------------------------------------------
 # Format
 # -----------------------------------------------------------------
+#' Title
+#'
+#' @param sequences
+#' @param sequences_aligned
+#'
+#' @export
+
 format = function(sequences, sequences_aligned) {
 
   # reconstruct sequence1 with insertions added

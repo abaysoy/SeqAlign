@@ -2,10 +2,9 @@ Package: SeqAlign
 Type: Package
 Title: Alignment of Two Sequences 
 Version: 0.1.0
-Author: Alev Baysoy
+Author: person("Alev Baysoy")
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Aligns two proteomic sequences with affine gap penalty implementation
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
