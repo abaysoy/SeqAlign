@@ -1,21 +1,3 @@
-#!/usr/bin/env Rscript
-
-### Usage: Rscript --vanilla hw1.R <input file> <score file>
-### Example: Rscript --vanilla hw1.R input.txt blosum62.txt
-### Note: Smith-Waterman Algorithm
-
-### This is one way to read in arguments in R
-args = commandArgs(trailingOnly=TRUE)
-
-if (length(args)<2) {
-  stop("At least two arguments must be supplied (inputFile, scoreFile).n", call.=FALSE) } else if (length(args)>=2) {
-    # default gap penalties
-    args[3] = -2
-    args[4] = -1 }
-
-## Specifying author and email
-p <- c(person("Alev", "Baysoy", role = "aut", email = "alev.baysoy@yale.edu"))
-
 
 # -----------------------------------------------------------------
 # runSW
@@ -27,6 +9,8 @@ p <- c(person("Alev", "Baysoy", role = "aut", email = "alev.baysoy@yale.edu"))
 #' @param openGap
 #' @param extGap
 #' @export
+#' runSW()
+#'
 runSW = function(inputFile, scoreFile, openGap = -2, extGap = -1) {
 
   # convert string to integer
@@ -71,6 +55,7 @@ runSW = function(inputFile, scoreFile, openGap = -2, extGap = -1) {
 #' @param openGap
 #' @param extGap
 #' @export
+#' W()
 W = function(k, openGap, extGap) {
   return ( (-1) * (openGap + extGap * (k - 1)) )
 }
@@ -86,6 +71,7 @@ W = function(k, openGap, extGap) {
 #' @param openGap
 #' @param extGap
 #' @export
+#' construct_matrices()
 #'
 
 construct_matrices = function(seq1, seq2, score_matrix, openGap, extGap) {
@@ -158,6 +144,7 @@ construct_matrices = function(seq1, seq2, score_matrix, openGap, extGap) {
 #' @param M
 #' @param A
 #' @export
+#' traceback()
 traceback = function(seq1, seq2, M, A) {
 
   # locate maximum value
@@ -215,6 +202,7 @@ traceback = function(seq1, seq2, M, A) {
 #' @param scoring_matrix
 #' @param sequences_aligned
 #' @export
+#' write2file()
 #'
 write2file = function(filepath, sequences, scoring_matrix, sequences_aligned) {
 
@@ -260,8 +248,8 @@ write2file = function(filepath, sequences, scoring_matrix, sequences_aligned) {
 #'
 #' @param sequences
 #' @param sequences_aligned
-#'
 #' @export
+#' format()
 
 format = function(sequences, sequences_aligned) {
 
@@ -309,10 +297,5 @@ format = function(sequences, sequences_aligned) {
 
 }
 
-
-# -----------------------------------------------------------------
-# Main
-# -----------------------------------------------------------------
-runSW(inputFile=args[1], scoreFile=args[2], openGap=args[3], extGap=args[4])
 
 
